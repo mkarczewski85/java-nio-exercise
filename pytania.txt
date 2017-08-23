@@ -1,0 +1,18 @@
+Do metod interfejsu List naleza:
+a. add, get, delete
+b. put, get, remove
+c. put, add, delete
+d. add, get, remove
+d
+Do typow prymitywnych naleza:
+a. int, String, double
+b. char, int, double
+c. int, char, Object
+d. Integer, String, Double
+b
+Instrukcje warunkowe to:
+a. for, while, do..while
+b.if..else, switch..case
+c.for, if..else
+d.if..elif
+b
