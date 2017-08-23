@@ -70,8 +70,9 @@ public class Main {
         }
         player.setScore(quiz.getScore());
         System.out.println("Twój wynik to: " + quiz.getScore() + "/" + questions.size());
+
         quiz.saveScore(player.getName(), player.getScore());
-        player.getRankingPlayers().add(player);
+
     }
 
 
@@ -85,6 +86,7 @@ public class Main {
             System.out.println("Brak wyników!");
         }
 
+        System.out.println();
     }
 
 

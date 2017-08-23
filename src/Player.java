@@ -1,19 +1,19 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by RENT on 2017-08-23.
- */
-public class Player implements Comparable {
+
+public class Player  {
 
     private String name;
     private int score;
-    private static List<Player> rankingPlayers = new ArrayList<>();
+
 
 
     public Player() {
 
     }
+
 
     public String getName() {
         return name;
@@ -31,13 +31,10 @@ public class Player implements Comparable {
         this.score = score;
     }
 
-    public List<Player> getRankingPlayers(){
-        return rankingPlayers;
-    }
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public String toString(){
+        return name + ": " + score;
     }
 
 }
