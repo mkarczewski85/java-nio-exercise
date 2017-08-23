@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+//klasa modelująca pytanie, zawiera pola do zapisania tytułu, odpowiedzi i prawidłowej odpowiedzi
 public class Question {
 
     private String title;
@@ -35,7 +35,7 @@ public class Question {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(title);
+        sb.append(title + "\n");
         for (String a : answers) {
             sb.append(a).append("\n");
         }

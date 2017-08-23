@@ -49,21 +49,31 @@ public class Main {
 
     public static void startNewQuiz() {
         Quiz quiz = new Quiz();
+        Player player = new Player();
         Scanner in = new Scanner(System.in);
         List<Question> questions = quiz.readAllQuestions();
-//
-//        for (Question q : questions) {
-//            System.out.println(q.toString());
-//        }
+
+        System.out.print("Podaj swoje imię: ");
+        player.setName(in.nextLine());
 
         for (int i = 0; i < questions.size(); i++) {
+            System.out.println("Pytanie nr " + (i + 1) + ":");
             System.out.println(questions.get(i).toString());
             System.out.print("Podaj właściwą odpowiedz: ");
-            String answer = in.next();
-
+            String answer = in.nextLine();
+            if (answer.equals(questions.get(i).getCorrectAnswer())) {
+                System.out.println("BRAWO! To prawidłowa odpowiedz!");
+                quiz.setNewScore();
+            } else {
+                System.out.println("Niestety to zła odpowiedz!");
+            }
         }
-
+        player.setScore(quiz.getScore());
+        System.out.println("Twój wynik to: " + quiz.getScore() + "/" + questions.size());
+        quiz.saveScore(player.getName(), player.getScore());
+        player.getRankingPlayers().add(player);
     }
+
 
     public static void showResults() {
         List<String> ranking = Quiz.getRanking();

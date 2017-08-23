@@ -1,6 +1,8 @@
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +11,10 @@ public class Quiz {
 
     private static final String PATH_TO_RESULT = "wyniki.txt";
     public static final String PATH_TO_QUESTIONS = "pytania.txt";
+    public int score;
 
+
+    //odczyt rankingu z pliku i zwrocenie go jako liste stringów
     public static List<String> getRanking() {
         List<String> result = null;
         try {
@@ -18,6 +23,14 @@ public class Quiz {
             e.printStackTrace();
         }
         return result;
+    }
+
+    public static void saveScore(String name, int score){
+        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("wyniki.txt"), StandardOpenOption.APPEND)) {
+            bw.write(name + ": " + score + " poprawnych odpowiedzi\n");
+        } catch (IOException ex){
+            ex.printStackTrace();
+        }
     }
 
     public List<Question> readAllQuestions() {
@@ -41,5 +54,14 @@ public class Quiz {
 
         return questionList;
     }
+
+    public void setNewScore(){
+        score++;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
 
 }
