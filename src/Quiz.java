@@ -1,7 +1,7 @@
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
@@ -26,10 +26,13 @@ public class Quiz {
         return result;
     }
 
-    public static void saveScore(String name, int score){
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("wyniki.txt"), StandardOpenOption.APPEND)) {
-            bw.write(name + ": " + score + " poprawnych odpowiedzi\n");
-        } catch (IOException ex){
+    public static void saveScore(String name, int score) {
+        String playersResult = name + ": " + score + " poprawnych odpowiedzi\n";
+        Path path = Paths.get(PATH_TO_RESULT);
+        try {
+            Files.write(path, playersResult.getBytes(), Files.exists(path)
+                    ? StandardOpenOption.APPEND : StandardOpenOption.CREATE);
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -56,11 +59,11 @@ public class Quiz {
         return questionList;
     }
 
-    public void setNewScore(){
+    public void setNewScore() {
         score++;
     }
 
-    public int getScore(){
+    public int getScore() {
         return score;
     }
 
